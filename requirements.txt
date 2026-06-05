@@ -1,0 +1,11 @@
+ultralytics
+moviepy
+transformers
+torch
+torchvision
+pillow
+ffmpeg-python
+faster-whisper
+better-profanity
+opencv-python
+numpy
