@@ -1,42 +1,54 @@
-# AI Video Content Moderator – Intelligent Video Moderation System
-
-An AI-powered video moderation system that automatically analyzes both visual and audio content to identify potentially inappropriate material and apply the appropriate level of censorship.
+# AI Video Moderation System
 
 ## Overview
 
-This project combines Computer Vision and Audio Processing to create a smarter content moderation pipeline. Instead of blindly censoring entire videos, the system first analyzes spoken content and visual elements to determine the most suitable action.
+AI Video Moderation System is an intelligent content filtering application designed to automatically detect and moderate inappropriate video content.
 
-If offensive language is detected in the audio, the entire video is blurred. Otherwise, the system performs visual analysis and selectively blurs only sensitive skin-exposed regions while preserving the rest of the scene.
+The system combines Computer Vision and Speech Processing techniques to analyze both visual and audio components of a video. It can blur potentially inappropriate visual content, detect offensive language from speech, and generate a moderation report through an interactive Gradio interface.
 
-This approach helps maintain content visibility while still protecting users from inappropriate material.
+---
 
-## How It Works
+## Features
 
-### Audio Analysis
+### Visual Content Moderation
 
-The system begins by extracting audio from the video and converting speech into text using Faster-Whisper. The generated transcript is then analyzed for profanity and offensive language.
+* Person detection using YOLOv8.
+* Skin region detection using computer vision techniques.
+* Automatic blurring of potentially explicit visual content.
 
-* Audio extraction and transcription
-* Profanity detection
-* Full-video blur when inappropriate language is detected
+### Audio Content Analysis
 
-### Visual Analysis
+* Speech-to-text transcription using Faster-Whisper.
+* Offensive language detection using profanity filtering.
+* Audio moderation reporting.
 
-If the audio passes moderation checks, the system proceeds to analyze the video frames.
+### Interactive Web Interface
 
-* Detects people using YOLOv8
-* Identifies exposed skin regions through HSV-based skin detection
-* Applies blur only to detected sensitive areas
-* Preserves faces, clothing, and background details whenever possible
+* Upload videos directly from the browser.
+* Select moderation mode:
 
-## Key Features
+  * NSFW Filtering
+  * Profanity Detection
+  * Both
+* Preview processed videos.
+* Download moderated output.
+* View moderation reports.
 
-* Automated video moderation pipeline
-* Multi-modal analysis using audio and visual data
-* Selective blurring instead of unnecessary full censorship
-* Fast and scalable processing
-* Privacy-friendly solution that can run locally using open-source tools
-* Designed for integration into content moderation and safety workflows
+---
+
+## System Architecture
+
+1. User uploads a video.
+2. Video frames are analyzed using YOLOv8.
+3. Skin detection is applied within detected person regions.
+4. Potentially inappropriate regions are blurred.
+5. Audio is extracted from the video.
+6. Faster-Whisper transcribes speech content.
+7. Profanity filtering identifies offensive language.
+8. A moderation report is generated.
+9. Processed video is returned to the user.
+
+---
 
 ## Technologies Used
 
@@ -44,15 +56,99 @@ If the audio passes moderation checks, the system proceeds to analyze the video 
 * YOLOv8
 * OpenCV
 * Faster-Whisper
-* Better-Profanity
+* Gradio
 * MoviePy
-* FFmpeg
-* Hugging Face Transformers
+* NumPy
+* Better-Profanity
+* PyTorch
 
-## Potential Applications
+---
 
-* Social media content moderation
-* Educational platform safety systems
-* Video sharing platforms
-* Automated compliance and content review pipelines
-* AI-powered media monitoring solutions
+## Project Structure
+
+```text
+AI-Video-Moderation-System/
+│
+├── notebook.ipynb
+├── sample_videos/
+├── output/
+├── README.md
+└── requirements.txt
+```
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/AI-Video-Moderation-System.git
+cd AI-Video-Moderation-System
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Running the Application
+
+Open the notebook and execute all cells.
+
+Or launch the Gradio interface:
+
+```python
+app.launch()
+```
+
+The application will generate a public/local URL where users can upload videos and receive moderated outputs.
+
+---
+
+## Example Workflow
+
+1. Upload a video.
+2. Choose:
+
+   * NSFW
+   * Profanity
+   * Both
+3. Click Process.
+4. Wait for analysis.
+5. Download the processed video.
+6. Review the moderation report.
+
+---
+
+## Future Improvements
+
+* Real NSFW classification models.
+* Multi-language profanity detection.
+* Timestamp-based moderation reports.
+* Face anonymization.
+* Real-time video moderation.
+* Cloud deployment.
+* User authentication and moderation dashboard.
+
+---
+
+## Educational Purpose
+
+This project was developed as an educational AI application demonstrating the integration of:
+
+* Computer Vision
+* Natural Language Processing
+* Speech Recognition
+* Content Moderation Systems
+* Interactive AI Interfaces
+
+---
+
+## Author
+
+Fatma Abdullah
+
